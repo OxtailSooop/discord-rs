@@ -8,13 +8,15 @@ mod gateway;
 
 #[tokio::main]
 async fn main() {
-    let _ = DiscordClient::new(
-        env::var("DISCORD_TOKEN").unwrap(),
-        Intents::GuildMessages as u32,
-    )
-    .await
-    .run(App)
-    .await;
+    let token = match env::var("DISCORD_TOKEN") {
+        Ok(token) => token,
+        Err(_) => panic!("Missing token, try setting one using:\n DISCORD_TOKEN=..."),
+    };
+
+    let _ = DiscordClient::new(token, Intents::GuildMessages as u32)
+        .await
+        .run(App)
+        .await;
 }
 
 struct App;
