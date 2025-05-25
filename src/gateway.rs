@@ -61,7 +61,6 @@ pub enum Opcode {
 pub enum EventType {
     Hello = 0,
     Ready = 1,
-    MessageCreate = 2,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

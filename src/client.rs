@@ -7,7 +7,8 @@ use crate::gateway::{DiscordGateway, DiscordGatewayError, EventType, GatewayEven
 #[derive(Deserialize_repr)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 #[repr(u32)]
-enum UserFlags {
+pub enum UserFlags {
+    None = 0,
     Staff = 1 << 0,
     Partner = 1 << 1,
     HypeSquad = 1 << 2,
@@ -31,7 +32,7 @@ enum UserFlags {
 #[derive(Deserialize_repr)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 #[repr(u8)]
-enum PremiumType {
+pub enum PremiumType {
     None,
     NitroClassic,
     Nitro,
